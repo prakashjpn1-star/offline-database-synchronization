@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prakashjpn1-star/offline-database-synchronization/schemas/bootstrap-request.schema.json",
+  "title": "Fresh replica bootstrap request",
+  "type": "object",
+  "properties": {
+    "replicaId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "schemaVersion": {
+      "const": 1
+    }
+  },
+  "required": [
+    "replicaId",
+    "schemaVersion"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "operations": [
+    {
+      "operationId": "replica-a-op-002",
+      "replicaId": "replica-a",
+      "recordId": "synthetic-001",
+      "kind": "UPDATE",
+      "baseRevision": 3,
+      "value": {
+        "label": "Sample",
+        "category": "test",
+        "quantity": 7
+      }
+    },
+    {
+      "operationId": "replica-b-op-001",
+      "replicaId": "replica-b",
+      "recordId": "synthetic-001",
+      "kind": "UPDATE",
+      "baseRevision": 3,
+      "value": {
+        "label": "Sample",
+        "category": "test",
+        "quantity": 9
+      }
+    }
+  ]
+}

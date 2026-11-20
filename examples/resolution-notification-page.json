@@ -1,0 +1,25 @@
+{
+  "sourceGeneration": "hub-generation-demo",
+  "afterSequence": 9,
+  "nextCheckpoint": 10,
+  "highWaterMark": 10,
+  "entries": [
+    {
+      "sequence": 10,
+      "kind": "RESOLUTION",
+      "operationId": "resolution-001",
+      "conflictId": "conflict-001",
+      "resolvedOperationId": "replica-b-op-001",
+      "state": {
+        "recordId": "synthetic-001",
+        "revision": 4,
+        "deleted": false,
+        "value": {
+          "label": "Sample",
+          "category": "test",
+          "quantity": 7
+        }
+      }
+    }
+  ]
+}

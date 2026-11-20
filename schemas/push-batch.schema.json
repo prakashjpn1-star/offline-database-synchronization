@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prakashjpn1-star/offline-database-synchronization/schemas/push-batch.schema.json",
+  "title": "Bounded push operation batch",
+  "type": "object",
+  "properties": {
+    "operations": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "operationId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "replicaId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "recordId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "kind": {
+                "const": "CREATE"
+              },
+              "baseRevision": {
+                "const": 0
+              },
+              "value": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  },
+                  "category": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000
+                  }
+                },
+                "required": [
+                  "label",
+                  "category",
+                  "quantity"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "operationId",
+              "replicaId",
+              "recordId",
+              "kind",
+              "baseRevision",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operationId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "replicaId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "recordId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "kind": {
+                "const": "UPDATE"
+              },
+              "baseRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "value": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  },
+                  "category": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000
+                  }
+                },
+                "required": [
+                  "label",
+                  "category",
+                  "quantity"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "operationId",
+              "replicaId",
+              "recordId",
+              "kind",
+              "baseRevision",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "operationId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "replicaId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "recordId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "kind": {
+                "const": "DELETE"
+              },
+              "baseRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "value": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "operationId",
+              "replicaId",
+              "recordId",
+              "kind",
+              "baseRevision",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 100
+    }
+  },
+  "required": [
+    "operations"
+  ],
+  "additionalProperties": false
+}

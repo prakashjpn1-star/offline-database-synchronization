@@ -23,3 +23,7 @@ This release baseline retains the supplied requirement identifiers and behaviora
 Illustrative push operation: `{"operationId":"replica-a-op-001","recordId":"synthetic-001","kind":"UPDATE","baseRevision":3,"value":{"label":"Sample","category":"test","quantity":7}}`. Base revision is captured when the local intent is created, not rewritten to force a stale change through.
 
 All human mutations define keyed replay and optimistic revisions. Return 400 malformed protocol, 422 invalid schema, 403 denied roles, 404 absent target, 409 revision/key conflict, 413 size limit and 503 unavailable store. A business sync conflict is a durable per-operation outcome, distinct from malformed requests or a changed-body idempotency conflict. Lists default to 50/maximum 200 with stable cursors.
+
+## Machine-readable companions
+
+The [schema catalog](../../schemas/README.md) and [worked examples](../../examples/README.md) define proposed request shapes. They add structural checks while the accepting transaction retains responsibility for revisions, authority and state-dependent rules.

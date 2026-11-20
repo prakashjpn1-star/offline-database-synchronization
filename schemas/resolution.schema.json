@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prakashjpn1-star/offline-database-synchronization/schemas/resolution.schema.json",
+  "title": "Conflict resolution request",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "expectedConflictRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "expectedRecordRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "currentStateDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "restoreConfirmed": {
+          "type": "boolean"
+        },
+        "choice": {
+          "const": "KEEP_CURRENT"
+        }
+      },
+      "required": [
+        "expectedConflictRevision",
+        "expectedRecordRevision",
+        "currentStateDigest",
+        "reason",
+        "choice"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "expectedConflictRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "expectedRecordRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "currentStateDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "restoreConfirmed": {
+          "type": "boolean"
+        },
+        "choice": {
+          "const": "APPLY_PROPOSAL"
+        }
+      },
+      "required": [
+        "expectedConflictRevision",
+        "expectedRecordRevision",
+        "currentStateDigest",
+        "reason",
+        "choice"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "expectedConflictRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "expectedRecordRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "currentStateDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "restoreConfirmed": {
+          "type": "boolean"
+        },
+        "choice": {
+          "const": "APPLY_EDITED"
+        },
+        "value": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "category": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "quantity": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000
+            }
+          },
+          "required": [
+            "label",
+            "category",
+            "quantity"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "expectedConflictRevision",
+        "expectedRecordRevision",
+        "currentStateDigest",
+        "reason",
+        "choice",
+        "value"
+      ],
+      "additionalProperties": false
+    }
+  ],
+  "$comment": "The server checks current conflict/record revisions and digest. Restoring a tombstone requires restoreConfirmed=true. Digest and idempotency key must describe the data actually viewed."
+}

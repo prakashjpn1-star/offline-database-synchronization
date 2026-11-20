@@ -1,0 +1,8 @@
+{
+  "operationId": "replica-a-op-003",
+  "replicaId": "replica-a",
+  "recordId": "synthetic-002",
+  "kind": "DELETE",
+  "baseRevision": 4,
+  "value": null
+}

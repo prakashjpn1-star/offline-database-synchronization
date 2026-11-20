@@ -1,0 +1,12 @@
+{
+  "operationId": "replica-a-op-001",
+  "replicaId": "replica-a",
+  "recordId": "synthetic-1001",
+  "kind": "CREATE",
+  "baseRevision": 0,
+  "value": {
+    "label": "Demo meter",
+    "category": "measurement",
+    "quantity": 7
+  }
+}
